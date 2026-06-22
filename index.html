@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hadir.id - Aplikasi Absensi GPS + Selfie Multi-Tenant</title>
+
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS v4 via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configure Custom Styles and font families for Tailwind -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+              display: ['Space Grotesk', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- CSS styles overrides for smooth transitions -->
+    <style>
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.3s ease-out forwards;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+  <body class="bg-slate-950 font-sans text-slate-100 min-h-screen flex flex-col antialiased">
+
+    <!-- Screen Loading Session Overlay -->
+    <div id="session-loader" class="fixed inset-0 bg-slate-950 flex flex-col items-center justify-center z-50 transition-opacity duration-300">
+      <div class="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin mb-4"></div>
+      <p class="text-xs text-slate-400 font-mono tracking-wider uppercase">Memuat Sesi Hadir.id...</p>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div id="app" class="flex-1 flex flex-col w-full h-full min-h-screen">
+      <!-- Views will be dynamically injected here via DOM manipulations inside script.js -->
+    </div>
+
+    <!-- GLOBAL LIGHTBOX PORTAL FOR PHOTO SELECTION PRINTS -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 backdrop-blur-xs hidden items-center justify-center p-4 z-50 animate-fade-in">
+      <div class="bg-slate-900 border border-slate-800 max-w-sm w-full rounded-2xl overflow-hidden p-3 flex flex-col relative" onclick="event.stopPropagation()">
+        <button id="lightbox-close-btn" class="absolute top-4 right-4 bg-black/60 hover:bg-black text-white hover:text-rose-400 p-2 rounded-full transition z-10 font-bold">&#x2715;</button>
+        <img id="lightbox-img" src="" alt="Selfie Detail Verification" class="w-full h-80 object-cover rounded-xl" />
+        <div class="flex justify-between items-center mt-3 text-white px-1">
+          <span class="text-[10px] text-gray-400 font-mono">Verifikasi Referensi Visual Utama</span>
+          <span class="text-[10px] font-bold text-indigo-400">Hadir.id Secure Face</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GLOBAL MIDTRANS SIGNATURE SUBSCRIPTION OVERLAY MODAL -->
+    <div id="midtrans-modal" class="fixed inset-0 bg-black/75 backdrop-blur-xs hidden items-center justify-center p-4 z-50 animate-fade-in">
+      <!-- Injected from JS simulation -->
+    </div>
+
+    <!-- ALL CORE REVENUE CLIENT JAVASCRIPT -->
+    <script src="/script.js"></script>
+  </body>
+</html>

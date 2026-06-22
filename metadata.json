@@ -1,0 +1,11 @@
+{
+  "name": "Hadir.id",
+  "description": "Sistem Absensi Online GPS & Selfie Real-Time untuk Perusahaan Korporat",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
